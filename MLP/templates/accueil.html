@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="{% static "bootstrap.min.css" %}">
+  <link rel="stylesheet" href="{% static "css.css" %}">
+  <script src="{% static "jquery.min.js" %}"></script>
+  <script src="{% static "bootstrap.min.js"%}"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script>
+
+    </script>
+
+</head>
+<body>
+		<nav class="navbar navbar-inverse" style="background-color: #2f5f7f ;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url  "Accueil" %}">ML Programming</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li class=""><a href="{% url  "Accueil" %}">Accueil</a></li>
+
+
+        <li><a href="{% url  "App" %}">Application</a></li>
+        <li><a href="{% url  "Doc" %}">Documentation</a></li>
+        <li><a href="{% url  "About" %}">A PROPOS</a></li>
+      </ul>
+
+  </div>
+  </div>
+</nav>
+<div class="row" >
+<div class="row" style="LINE-HEIGHT:30px;">
+    <div class="col-lg-1 col-md-1 col-xs-1 col-sm-1">  </div>
+    <div class="col-lg-6 col-md-6 col-sm-10 col-xs-10">
+        <div class="text-info h2">Bienvenue</div>
+        <div class="text h4" style="LINE-HEIGHT:30px;">
+        Ce Projet est un exemple d'implémentation des algorithmes d'apprentissage <br/>
+           automatique en utilisant un ensemble de phrase en arabe.<br/>
+        les algorithmes implémentés sont: <br/>
+            >K-nearest neighbor<br/>
+            >Naive Bayes<br/>
+            >Support Vector Machine<br/>
+            <br/>
+        </div>
+
+        <div class="h4" style="LINE-HEIGHT:30px;">
+        les resultats obtenus sont impressionants, en effet vous pouvez consulter les statistiques de la recherche à la page de
+        <a href="{% url  "Doc" %}#collapse4">documentation</a>
+        </div>
+        <div><h4>
+            vous pouvez tester notre <a class="btn btn-circle" href="{% url  "App" %}" >application</a></h4>
+        </div>
+    </div>
+    <div class="col-lg-5 col-md-5 col-sm-10 col-xs-10">
+        <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active"><img src="{% static "2.png" %}"/>
+                </div>
+
+                <div class="item"><img src="{% static "1.png" %}"/>
+                </div>
+
+                <div class="item"><img src="{% static "0.png" %}"/>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="row">
+<div class="col-md-10 col-lg-10 col-xs-10 col-sm-10
+            col-xs-offset-1 col-md-offset-1 col-lg-offset-1 col-sm-offset-1">
+    <h4 style="text-space: 1">
+        ce site a été developpe au sein de <a href="http://www.fsm.rnu.tn">la faculté des sciences de Monastir</a> en utilisant <a href="https://www.python.org/">python</a>, <a href="https://www.djangoproject.com">django</a> et <a href="http://getbootstrap.com/"> bootstrap </a>,
+        <br/>
+        on doit aussi citer les bibliotheques de python utiliser pour l'etude et l'analyse : <a href="http://scikit-learn.org">scikit-learn</a> et <a href="https://matplotlib.org">matplotlib</a>
+    </h4>
+</div>
+</div>
+<div class="row">
+    <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+    <div class="col-lg-2 col-md-2">
+        <a href="https://www.python.org/">
+        python
+            <img src="{% static "python.png" %}"/>
+        </a>
+    </div>
+    <div class="col-lg-2 col-md-2">
+        <a href="https://www.djangoproject.com">
+        django
+            <img src="{% static "django.png" %}"/></a>
+    </div>
+    <div class="col-lg-2 col-md-2">
+        <a href="http://getbootstrap.com/">
+        bootstrap
+            <img src="{% static "bootstrap.png" %}"/>
+        </a>
+    </div>
+    <div class="col-lg-2 col-md-2">
+        <a href="https://matplotlib.org">
+        matplotlib
+        <img src="{% static "matplotlib.png" %}"/>
+        </a>
+    </div>
+    <div class="col-lg-2 col-md-2">
+        <a href="http://scikit-learn.org">
+        scikit-learn
+            <img src="{% static "scikitlearn.png" %}"/>
+        </a>
+    </div>
+    </div>
+</div>
+</div>
+<footer class="container-fluid row text-center bg-lightgray">
+
+        <div class="copyrights" style="margin-top:25px;">
+			<span>Projet de Dhifli Mohamed et Hammami Mohamed</span></p>
+            <p>Faculté des sciences de Monastir © 2017, Tous droits réservés.</p>
+            <p><a href="#" target="_blank">Dhifli </a></p>
+
+
+        </div>
+
+    </footer>
+
+</body>
+</html>

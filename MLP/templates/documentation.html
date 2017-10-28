@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="{% static "bootstrap.min.css" %}">
+  <link rel="stylesheet" href="{% static "css.css" %}">
+  <script src="{% static "jquery.min.js" %}"></script>
+  <script src="{% static "bootstrap.min.js"%}"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+</head>
+
+		<nav class="navbar navbar-inverse" style="background-color: #2f5f7f ;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url  "Accueil" %}">ML Programming</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li class=""><a href="{% url  "Accueil" %}">Accueil</a></li>
+
+
+        <li><a href="{% url  "App" %}">Application</a></li>
+        <li><a href="{% url  "Doc" %}">Documentation</a></li>
+        <li><a href="{% url  "About" %}">A PROPOS</a></li>
+      </ul>
+
+  </div>
+  </div>
+</nav>
+
+
+    <div class="container-fluid " >
+
+	<div class="row col-md-offset-1 col-md-10">
+
+		<div class="row-md-12">
+
+<div class="panel-group" id="accordion">
+	<div class="panel thumbnail">
+    <div class="panel-heading text-primary ">
+
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="panel-title">
+        <h2> notre projet</h2></a>
+
+    </div>
+    <div id="collapse1" class="panel-collapse collapse in">
+      <div class="panel-body">
+          <h4>
+              Ce site est un exemple de systeme d'analyse des sentiments,<br/>
+              l'utilisation du site est simple :
+              <ol>
+              <li>entrer une phrase en arabe,</li>
+              <li>choisir l'algorithme de classification,</li>
+              <li>choisir les parametres,</li>
+              <li>cliquer sur "polarité".</li>
+              </ol>
+              pour bien utiliser l'application web vous devez choisir l'algorithme a utiliser ainsi que les parametres.
+          </h4></div>
+    </div>
+  </div>
+
+	<div class="panel thumbnail">
+    <div class="panel-heading text-primary ">
+
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" class="panel-title">
+       <h2> L’analyse des sentiments</h2> </a>
+
+    </div>
+    <div id="collapse2" class="panel-collapse collapse">
+      <div class="panel-body" data-toggle="collapse">
+	  <h4>
+	  L’analyse des sentiments est l’extraction de l’opinion à partir d’un texte, il s‘agit du processus qui permet de déterminer l’avis qui se cache derrière un texte, on parle alors de polarité, elle peut être positive, neutre ou négative. C’est une démarche principalement basée sur le « text mining » et l’analyse sémantique.
+L’analyse de sentiment est un procès délicat et sensible au contexte et à l’environnement ou on s’exprime, il nécessite avoir de phrase qui exprime l’opinion de façon claire sinon L’identification du sentiment devient difficile.
+
+	  </h4>
+	  </div>
+    </div>
+  </div>
+
+	<div class="panel thumbnail">
+    <div class="panel-heading text-primary">
+
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" class="panel-title">
+        <h2>
+		les Algorithmes Utilisés
+		</h2>
+		</a>
+
+    </div>
+    <div id="collapse3" class="panel-collapse collapse">
+      <div class="panel-body">
+          <h4>
+	  K Nearest Neighbors:<br>
+La méthode k Nearest Neighbors(KNN) est un algorithme est l’un des algorithmes d’apprentissage supervisé qui stocke tous les cas disponibles et classe de nouveaux cas à partir d'une mesure de similarité. <a href="https://fr.wikipedia.org/wiki/M%C3%A9thode_des_k_plus_proches_voisins">lire plus</a>
+<br/>
+Naïf bayesien:<br>
+Le naïf bayésien(NB)est l’une des méthodes les plus simples en apprentissage supervisé. Il est basée sur l'application du théorème de Bayes avec des hypothèses d'indépendance fortes (naïves) entre les caractéristiques. <a href="https://fr.wikipedia.org/wiki/Classification_na%C3%AFve_bay%C3%A9sienne">lire plus</a>
+          <br/>
+Support Vector machine:<br>
+sont un ensemble de techniques d'apprentissage supervisé destinées à résoudre des problèmes de discriminationnote et de régression. <a href="https://fr.wikipedia.org/wiki/Machine_%C3%A0_vecteurs_de_support">lire plus</a>
+          </h4>
+      </div>
+    </div>
+  </div>
+
+
+	<div class="panel thumbnail">
+    <div class="panel-heading text-primary">
+
+        <a id="res" data-toggle="collapse" data-parent="#accordion" href="#collapse4" class="panel-title">
+        <h2>les parametres</h2></a>
+
+    </div>
+    <div id="collapse4" class="panel-collapse collapse">
+      <div class="panel-body">
+	 <h4>
+         on vous a donné la possibilité de changer les parametres :<br/>
+         Stemmer :<br/>
+         <li>c'est la racination des mots, c'est un processus qui permet de renvoyer la racine du mot et éliminer les mot subjectives.<a href="https://fr.wikipedia.org/wiki/Racinisation">lire plus</a>
+             <br/> variation de K :<br/> <li>c'est le changement de nombre de voisins pris en compte par l'algorithme KNN (meuilleur resultats avec k = 35).</li>
+         <br/> changement de kernel :<br/> <li>changement du type de la fonction de kernel de support vector machine rbf/poly/linear (des meuilleurs resultats sont donnés avec kernel lineaire).</li>
+         <br/> chagement de type de naive bayes :<br/> <li>naive bayes Bernoulli et naive bayes Multinomiale (des meuilleurs resultats sont donnés avec nb multinomial).</li>
+     </h4></div>
+    </div>
+  </div>
+</div>
+      </div>
+      </div>
+      </div>
+
+
+
+    <footer class="container-fluid text-center bg-lightgray">
+
+        <div class="copyrights" style="margin-top:25px;">
+			<span>Projet de Dhifli Mohamed et Hammami Mohamed</span></p>
+            <p>Faculté des sciences de Monastir © 2017, Tous droits réservés.</p>
+            <p><a href="#" target="_blank">Dhifli </a></p>
+
+
+        </div>
+    </footer>
+
+
+
+</body>
+</html>

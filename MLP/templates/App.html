@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="{% static "bootstrap.min.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css.css" %}">
+    <script src="{% static  "jquery.min.js" %}"></script>
+    <script src="{% static  "bootstrap.min.js"%}"></script>
+    <script src="{% static  "myjs.js"%}"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+</head>
+<body>
+
+
+		<nav class="navbar navbar-inverse" style="background-color: #2f5f7f ;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url  "Accueil" %}">ML Programming</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li class=""><a href="{% url  "Accueil" %}">Accueil</a></li>
+
+
+        <li><a href="{% url  "App" %}">Application</a></li>
+        <li><a href="{% url  "Doc" %}">Documentation</a></li>
+        <li><a href="{% url  "About" %}">A PROPOS</a></li>
+      </ul>
+
+  </div>
+  </div>
+</nav>
+<br />
+
+<div class="row" style="min-height: 500px">
+    
+    <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-10 col-sm-offset-1">
+
+    <form method="Post" action="{% url  "App" %}">
+        {% csrf_token %}
+        <div class="form-group">
+        <h4 class="form-control-static ">entrer une phrase en arabe</h4>
+            <div class="help-block"></div>
+        <input type="text" name="tweet"  class="form-control" placeholder="..." minlength="5" dir="rtl">
+            <div class="help-block"></div>
+
+
+        <select id="id0" name="algorithme"  class="form-control" onchange="changealg()">
+            <option value="0">K-nearest neighbors</option>
+            <option value="1">naiv bayes</option>
+            <option value="2">support vector machine</option>
+        </select>
+        <div>
+            <div class="text-center text-info h4">
+                parametres
+            <section title="parametre de l'algorithme">
+
+        <label class="cbd" for="cb" data-toggle="collapse" data-target="#collapseOne" onclick="changealg()">
+
+            <input name="cb" id="cb" type="checkbox" onload="cb.checked=false;changealg()" >
+            <label for="cb" data-toggle="collapse" data-target="#collapseOne" onclick="changealg()"></label>
+
+        </label>
+
+            </section>
+
+
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div>
+    <div>
+            <h4 class="text-center text-info">stemmer
+            <section title="utiliser Stemmer">
+            <label for="st" class="st" >
+
+                <input name="st" id="st" type="checkbox" onload="st.checked=false;">
+            <label for="st"></label>
+        </label>
+            </section></h4>
+        </div>
+
+                    <div class="checkbox">
+
+                        <div id="id1" >
+
+                            <div class="text-center col-md-2 col-md-offset-5 col-xs-2 col-xs-offset-5 col-sm-2 col-sm-offset-5">
+                            <output  id="rangevalue">k=35</output>
+                            </div>
+                            <br/>
+                            <br/>
+                            <input id="k" name="k" type="range" min="1" max="100" step="1" value="35" class="form-control" onchange="rangevalue.value='k='+value">
+
+                        </div>
+                    </div>
+                    <div class="checkbox" >
+
+                                    <div id="id2" class="checkbox btn-group col-md-offset-3" data-toggle="buttons">
+                                        <h3>choisir le type de Naive Bayes</h3>
+
+                                        <label class="btn btn-info active ">
+                                        <input type="radio" name="nb" value="0" autocomplete="on" >naive bayes Multinomial
+                                        </label>
+                                        <label class="btn btn-info ">
+                                        <input type="radio" name="nb" value="1" >naive bayes Bernoulli
+                                        </label>
+                                    </div>
+                    </div>
+
+
+									
+                                    <div id="id3" class="checkbox btn-group col-md-offset-3" data-toggle="buttons">
+                                        <h3>choisir un kernel</h3>
+                                        <label class="btn btn-info active " >
+                                        <input type="radio" name="ker" value="0" autocomplete="on" >linear
+                                        </label>
+                                        <label class="btn btn-info">
+                                        <input type="radio" name="ker" value="1" >rbf
+                                        </label>
+                                        <label class="btn btn-info">
+                                        <input type="radio" name="ker" value="2" >poly
+                                        </label>
+                                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-6 col-md-offset-3">
+        <input type="submit" value="Polarité" class=" btn-primary form-control">
+        </div></div>
+    </form>
+
+
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+{% if request.method == 'POST' %}
+
+
+    <div class="modal show " id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top:10%">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Résultat</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="delmodel()">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{ pol }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="delmodel()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+
+<footer class="container-fluid text-center bg-lightgray">
+
+        <div class="copyrights" style="margin-top:25px;">
+			<span>Projet de Dhifli Mohamed et Hammami Mohamed</span></p>
+            <p>Faculté des sciences de Monastir © 2017, Tous droits réservés.</p>
+            <p><a href="#" target="_blank">Dhifli </a></p>
+
+
+        </div>
+    </footer>
+
+</body>
+</html>
